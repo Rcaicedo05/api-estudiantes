@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - echo "Ejecutando pruebas unitarias..."
+      - pytest tests/ -v
+  build:
+    commands:
+      - echo "Empaquetando aplicacion..."
+      - zip -r app-bundle.zip . -x "*.git*"
+  post_build:
+    commands:
+      - echo "Build completado exitosamente"
+
+artifacts:
+  files:
+    - app-bundle.zip
+  discard-paths: yes
+  
