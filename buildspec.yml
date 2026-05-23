@@ -7,10 +7,10 @@ phases:
     commands:
       - pip install --upgrade pip
       - pip install -r requirements.txt
-  pre_build:
-    commands:
-      - echo "Ejecutando pruebas unitarias..."
-      - pytest test/ -v
+pre_build:
+  commands:
+    - echo "Ejecutando pruebas unitarias..."
+    - PYTHONPATH=.pytest test/ -v
   build:
     commands:
       - echo "Empaquetando aplicacion..."
