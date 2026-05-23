@@ -7,20 +7,14 @@ phases:
     commands:
       - pip install --upgrade pip
       - pip install -r requirements.txt
-pre_build:
-  commands:
-    - echo "Ejecutando pruebas unitarias..."
-    - PYTHONPATH=.pytest test/ -v
+  pre_build:
+    commands:
+      - echo "Ejecutando pruebas unitarias..."
+      - PYTHONPATH=. pytest test/ -v
   build:
     commands:
-      - echo "Empaquetando aplicacion..."
-      - zip -r app-bundle.zip . -x "*.git*"
-  post_build:
-    commands:
-      - echo "Build completado exitosamente"
+      - echo "Compilación e inspección completadas."
 
 artifacts:
   files:
-    - app-bundle.zip
-  discard-paths: yes
-  
+    - '**/*'
