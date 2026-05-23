@@ -10,7 +10,7 @@ phases:
   pre_build:
     commands:
       - echo "Ejecutando pruebas unitarias..."
-      - pytest tests/ -v
+      - pytest test/ -v
   build:
     commands:
       - echo "Empaquetando aplicacion..."
